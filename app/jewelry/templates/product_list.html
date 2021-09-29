@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Все изделия</title>
+</head>
+
+<body>
+    <h2><a href="/products/create">Добавить изделие</a></h2>
+
+    {% for object in object_list %}
+
+    <li>Название: {{ object.title }}  Качество: {{ object.sort }}</li>
+    <li>Цена: {{ object.price }}  Кол-во: {{ object.quantity }}</li>
+    <a href="/products/{{ object.id }}">Детальная информация</a>
+
+    {% if object.id_firm==user.id %}
+    <a href="/products/{{ object.id }}/update">Изменить</a>
+    <a href="/products/{{ object.id }}/delete">Удалить</a>
+    {% endif %}
+
+    <hr/>
+    {% empty %}
+    <p>Нет изделий.</p>
+    {% endfor %}
+</body>
+
+</html>
