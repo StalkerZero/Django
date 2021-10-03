@@ -7,17 +7,21 @@
 </head>
 
 <body>
+    <br>
+    <button type="button"><a href="/"><-- Вернуться на главную страницу</a></button>
+    {% if user.firm != '' %}
     <h2><a href="/products/create">Добавить изделие</a></h2>
+    {% endif %}
 
     {% for object in object_list %}
 
-    <li>Название: {{ object.title }}  Качество: {{ object.sort }}</li>
+    <li><strong>Название: {{ object.title }}</strong>  Качество: {{ object.sort }}</li>
     <li>Цена: {{ object.price }}  Кол-во: {{ object.quantity }}</li>
     <a href="/products/{{ object.id }}">Детальная информация</a>
 
-    {% if object.id_firm==user.id %}
-    <a href="/products/{{ object.id }}/update">Изменить</a>
-    <a href="/products/{{ object.id }}/delete">Удалить</a>
+    {% if user.firm == object.id_firm %}
+        <a href="/products/{{ object.id }}/update">Изменить</a>
+        <a href="/products/{{ object.id }}/delete">Удалить</a>
     {% endif %}
 
     <hr/>

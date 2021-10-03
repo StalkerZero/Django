@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+
+<body>
+    <p>Здарова,
+        {% if user.is_authenticated %} {{ user.username }}
+        {% else %} гость сайта
+        {% endif %}
+    </p>
+    <br><button type="button"><a href="/products">Изделия</a></button><br><br>
+
+    {% if user.is_authenticated %} <button type="button"><a href="/logout"> Выйти из аккаунта</a></button>
+    {% else %}
+        <button type="button"><a href="/login">Логин </a></button>
+        <br>
+        <button type="button"><a href="/register_buyer">Зарегистрироваться как покупатель</a></button>
+        <br>
+        <button type="button"><a href="/register_firm">Зарегистрироваться как фирма</a></button>
+    {% endif %}
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Изделие "{{ object.title }}"</title>
+</head>
+
+<body>
+    <button type="button"><a href="/products">Вернуться к списку изделий</a></button><br>
+
+    <strong>Название: {{ object.title }}</strong><br>
+    Качество: {{ object.sort }}<br>
+    Цена: {{ object.price }}<br>
+    Кол-во: {{ object.quantity }}<br>
+    <br>
+    Фирма: {{ object.id_firm }}<br>
+    Фамилия директора: {{ object.id_firm }}<br>
+    Номер фирмы: {{ object.id_firm.phone_number }}<br>
+
+    {% if user.buyer != '' %}
+    <form method="post">
+        {% csrf_token %}
+        <input hidden="true" name="id" value="{{ object.pk }}">
+        <input type="number" name="quantity">
+        <input type="submit" value="Купить">
+    </form>
+    {% endif %}
+</body>
+
+</html>

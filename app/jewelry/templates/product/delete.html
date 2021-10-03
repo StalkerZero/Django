@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление изделия</title>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        {% if user.firm == object.id_firm %}
+            {% csrf_token %}
+            <p>Вы уверены, что хотите удалить изделие "{{object.title}}" в количестве "{{object.quantity}}"?</p>
+            <input type="submit" value="Подтверждение">
+            <button type="button"><a href="/products">Отмена</a></button>
+        {% else %}
+            <h1><strong>Не шали</strong></h1>
+            <button type="button"><a href="/">Вернуться на главную страницу</a></button>
+        {% endif %}
+    </form>
+</body>
+</html>
