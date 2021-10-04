@@ -17,7 +17,8 @@ class FirmCreate(UserCreationForm):
                                  'unique': _("A user with that username already exists."),
                              }, )
 
-    # last_name =
+    last_name = forms.CharField(label="Фамилия директора", max_length=150)
+
     class Meta:
         model = Firm
         fields = ('username', 'password1', 'password2', 'address', 'last_name', 'phone_number')

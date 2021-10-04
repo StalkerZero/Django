@@ -5,6 +5,7 @@
     <title>Регистрация покупателя</title>
 </head>
 <body>
+    <button type="button"><a href="/"><-- Вернуться на главную страницу</a></button><br>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
